@@ -43,6 +43,19 @@ header p {
   color: #aaa;
 }
 
+.header-chico {
+  padding: 0;
+}
+
+.header-chico .header-overlay {
+  padding: 80px 20px 40px;
+}
+
+.header-chico h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+}
+
 nav {
   background-color: #222;
   padding: 10px 20px;

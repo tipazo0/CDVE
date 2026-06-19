@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Tipazo - Actividades</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <header class="header-chico">
+      <div class="header-overlay">
+        <h1>Actividades</h1>
+      </div>
+    </header>
+
+    <nav>
+      <div class="nav-contenido">
+        <div class="nav-marca">
+          <img src="imagenes/logo.png" alt="Escudo" class="nav-escudo">
+          <span class="nav-nombre">Club Tipazo</span>
+        </div>
+        <button class="nav-hamburguesa" onclick="toggleMenu()">☰</button>
+        <div class="nav-links" id="nav-links">
+          <a href="index.html">Inicio</a>
+          <a href="actividades.html">Actividades</a>
+          <a href="servicios.html">Servicios</a>
+          <a href="socios.html">Socios</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+      </div>
+    </nav>
+
+<section id="actividades">
+     <h2>Nuestras actividades</h2>
+     <div class="grilla-actividades">
+
+     <div class="actividad">
+       <img src="imagenes/basquet.webp" alt="Básquet">
+       <h3>Básquet</h3>
+       <button class="btn-horarios" onclick="abrirModal('Básquet', `
+       <p>🕐 Lunes y miércoles 18 a 20hs</p>
+       <p>🕐 Viernes 19 a 21hs</p>
+       <img src='imagenes/basquet.webp' alt='Horarios Básquet'>
+       `)">Ver horarios</button>
+       <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
+     </div>
+
+     <div class="actividad">
+       <img src="imagenes/tenis.webp" alt="Tenis">
+       <h3>Tenis</h3>
+       <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
+       <div class="horarios">
+       <p>🕐 Lunes y miércoles 18 a 20hs</p>
+       <p>🕐 Viernes 19 a 21hs</p>
+       </div>
+       <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
+     </div>
+
+     <div class="actividad">
+       <span class="icono">🏓</span>
+       <h3>Ping Pong</h3>
+       <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
+       <div class="horarios">
+       <p>🕐 Lunes y miércoles 18 a 20hs</p>
+       <p>🕐 Viernes 19 a 21hs</p>
+       </div>
+       <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
+     </div>
+
+     <div class="actividad">
+       <span class="icono">🤾</span>
+       <h3>Handball</h3>
+       <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
+       <div class="horarios">
+       <p>🕐 Lunes y miércoles 18 a 20hs</p>
+       <p>🕐 Viernes 19 a 21hs</p>
+       </div>
+       <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
+     </div>
+
+     <div class="actividad">
+       <span class="icono">🏐</span>
+       <h3>Vóley</h3>
+       <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
+       <div class="horarios">
+       <p>🕐 Lunes y miércoles 18 a 20hs</p>
+       <p>🕐 Viernes 19 a 21hs</p>
+       </div>
+       <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
+     </div>
+
+     <div class="actividad">
+       <span class="icono">🎾</span>
+       <h3>Pádel</h3>
+       <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
+       <div class="horarios">
+       <p>🕐 Lunes y miércoles 18 a 20hs</p>
+       <p>🕐 Viernes 19 a 21hs</p>
+       </div>
+       <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
+      </div>
+
+     <div class="actividad">
+       <span class="icono">🥋</span>
+       <h3>Taekwondo</h3>
+       <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
+       <div class="horarios">
+      <p>🕐 Lunes y miércoles 18 a 20hs</p>
+      <p>🕐 Viernes 19 a 21hs</p>
+      </div>
+      <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
+      </div>
+
+    <div class="actividad">
+      <span class="icono">🥋</span>
+      <h3>Kung Fu</h3>
+      <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
+      <div class="horarios">
+      <p>🕐 Lunes y miércoles 18 a 20hs</p>
+      <p>🕐 Viernes 19 a 21hs</p>
+      </div>
+      <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
+    </div>
+
+    <div class="actividad">
+      <span class="icono">🤸</span>
+      <h3>Gimnasia Artística</h3>
+      <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
+      <div class="horarios">
+      <p>🕐 Lunes y miércoles 18 a 20hs</p>
+      <p>🕐 Viernes 19 a 21hs</p>
+      </div>
+      <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
+    </div>
+
+    <div class="actividad">
+      <span class="icono">⛸️</span>
+      <h3>Patín</h3>
+      <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
+      <div class="horarios">
+      <p>🕐 Lunes y miércoles 18 a 20hs</p>
+      <p>🕐 Viernes 19 a 21hs</p>
+      </div>
+      <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
+    </div>
+
+    <div class="actividad">
+      <span class="icono">💃</span>
+      <h3>Baile</h3>
+      <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
+      <div class="horarios">
+      <p>🕐 Lunes y miércoles 18 a 20hs</p>
+      <p>🕐 Viernes 19 a 21hs</p>
+      </div>
+      <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
+    </div>
+
+    <div class="actividad">
+      <span class="icono">🎵</span>
+      <h3>Canto</h3>
+      <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
+      <div class="horarios">
+      <p>🕐 Lunes y miércoles 18 a 20hs</p>
+      <p>🕐 Viernes 19 a 21hs</p>
+      </div>
+      <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
+     </div>
+
+     <div class="actividad">
+      <span class="icono">♟️</span>
+      <h3>Ajedrez</h3>
+      <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
+      <div class="horarios">
+      <p>🕐 Lunes y miércoles 18 a 20hs</p>
+      <p>🕐 Viernes 19 a 21hs</p>
+      </div>
+      <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
+     </div>
+
+     <div class="actividad">
+      <span class="icono">🧘</span>
+      <h3>Yoga</h3>
+      <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
+      <div class="horarios">
+      <p>🕐 Lunes y miércoles 18 a 20hs</p>
+      <p>🕐 Viernes 19 a 21hs</p>
+      </div>
+      <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
+     </div>
+
+     </div>
+   </section>
+
+    <footer>
+      <p>© 2025 Club Tipazo</p>
+    </footer>
+
+    <script src="script.js"></script>
+     <div class="modal-overlay" id="modalOverlay" onclick="cerrarModal()">
+       <div class="modal-contenido" onclick="event.stopPropagation()">
+         <button class="modal-cerrar" onclick="cerrarModal()">✕</button>
+         <h3 id="modal-titulo"></h3>
+        <div id="modal-cuerpo"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

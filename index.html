@@ -1,13 +1,16 @@
-hacer que se vean las historias de ig
-crear bloque de publicaciones
+hacer que se vean las historias de ig, crear bloque de publicaciones
 seccion genero y accion como activdades (servicio) sociales
 seccion de instalaciones
 seccion de esponsors
 arrancar la pagina con imagenes del club y sus actividades, con un slider o carrusel
 seccion de socio (formulario de inscripcion y aranceles)
 Seccion de tienda (imagenes de la ropa, precios y link de compra)
+Unir la seccion de servicios con la de socios
 
-Pagina de actividades con grilla y buscador, cada una abre en una ventana (horarios, precio, ig, wsp con link directo)  
+Pagina de actividades con grilla y buscador, cada una abre en una ventana (horarios, precio, ig, wsp con link directo)
+cambiar nombre de las imagenes
+bajar la sombra de los logos
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -36,175 +39,14 @@ Pagina de actividades con grilla y buscador, cada una abre en una ventana (horar
         </div>
         <button class="nav-hamburguesa" onclick="toggleMenu()">☰</button>
        <div class="nav-links" id="nav-links">
-         <a href="#actividades" onclick="cerrarMenu()">ACTIVIDADES</a>
-         <a href="#nosotros" onclick="cerrarMenu()">NOSOTROS</a>
-         <a href="#servicios" onclick="cerrarMenu()">SERVICIOS</a>
-         <a href="#contacto" onclick="cerrarMenu()">CONTACTO</a>
-         <a href="#granitodearena" onclick="cerrarMenu()">GRANITO DE ARENA</a>
+         <a href="actividades.html" onclick="cerrarMenu()">ACTIVIDADES</a>
+         <a href="nosotros.html" onclick="cerrarMenu()">NOSOTROS</a>
+         <a href="servicios.html" onclick="cerrarMenu()">SERVICIOS</a>
+         <a href="contacto.html" onclick="cerrarMenu()">CONTACTO</a>
+         <a href="granitodearena.html" onclick="cerrarMenu()">GRANITO DE ARENA</a>
        </div>
      </div>
     </nav>
-    
-   <section id="actividades">
-     <h2>Nuestras actividades</h2>
-     <div class="grilla-actividades">
-
-     <div class="actividad">
-       <img src="imagenes/basquet.webp" alt="Básquet">
-       <h3>Básquet</h3>
-       <button class="btn-horarios" onclick="abrirModal('Básquet', `
-       <p>🕐 Lunes y miércoles 18 a 20hs</p>
-       <p>🕐 Viernes 19 a 21hs</p>
-       <img src='imagenes/basquet.webp' alt='Horarios Básquet'>
-       `)">Ver horarios</button>
-       <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
-     </div>
-
-     <div class="actividad">
-       <img src="imagenes/tenis.webp" alt="Tenis">
-       <h3>Tenis</h3>
-       <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
-       <div class="horarios">
-       <p>🕐 Lunes y miércoles 18 a 20hs</p>
-       <p>🕐 Viernes 19 a 21hs</p>
-       </div>
-       <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
-     </div>
-
-     <div class="actividad">
-       <span class="icono">🏓</span>
-       <h3>Ping Pong</h3>
-       <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
-       <div class="horarios">
-       <p>🕐 Lunes y miércoles 18 a 20hs</p>
-       <p>🕐 Viernes 19 a 21hs</p>
-       </div>
-       <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
-     </div>
-
-     <div class="actividad">
-       <span class="icono">🤾</span>
-       <h3>Handball</h3>
-       <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
-       <div class="horarios">
-       <p>🕐 Lunes y miércoles 18 a 20hs</p>
-       <p>🕐 Viernes 19 a 21hs</p>
-       </div>
-       <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
-     </div>
-
-     <div class="actividad">
-       <span class="icono">🏐</span>
-       <h3>Vóley</h3>
-       <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
-       <div class="horarios">
-       <p>🕐 Lunes y miércoles 18 a 20hs</p>
-       <p>🕐 Viernes 19 a 21hs</p>
-       </div>
-       <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
-     </div>
-
-     <div class="actividad">
-       <span class="icono">🎾</span>
-       <h3>Pádel</h3>
-       <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
-       <div class="horarios">
-       <p>🕐 Lunes y miércoles 18 a 20hs</p>
-       <p>🕐 Viernes 19 a 21hs</p>
-       </div>
-       <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
-      </div>
-
-     <div class="actividad">
-       <span class="icono">🥋</span>
-       <h3>Taekwondo</h3>
-       <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
-       <div class="horarios">
-      <p>🕐 Lunes y miércoles 18 a 20hs</p>
-      <p>🕐 Viernes 19 a 21hs</p>
-      </div>
-      <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
-      </div>
-
-    <div class="actividad">
-      <span class="icono">🥋</span>
-      <h3>Kung Fu</h3>
-      <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
-      <div class="horarios">
-      <p>🕐 Lunes y miércoles 18 a 20hs</p>
-      <p>🕐 Viernes 19 a 21hs</p>
-      </div>
-      <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
-    </div>
-
-    <div class="actividad">
-      <span class="icono">🤸</span>
-      <h3>Gimnasia Artística</h3>
-      <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
-      <div class="horarios">
-      <p>🕐 Lunes y miércoles 18 a 20hs</p>
-      <p>🕐 Viernes 19 a 21hs</p>
-      </div>
-      <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
-    </div>
-
-    <div class="actividad">
-      <span class="icono">⛸️</span>
-      <h3>Patín</h3>
-      <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
-      <div class="horarios">
-      <p>🕐 Lunes y miércoles 18 a 20hs</p>
-      <p>🕐 Viernes 19 a 21hs</p>
-      </div>
-      <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
-    </div>
-
-    <div class="actividad">
-      <span class="icono">💃</span>
-      <h3>Baile</h3>
-      <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
-      <div class="horarios">
-      <p>🕐 Lunes y miércoles 18 a 20hs</p>
-      <p>🕐 Viernes 19 a 21hs</p>
-      </div>
-      <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
-    </div>
-
-    <div class="actividad">
-      <span class="icono">🎵</span>
-      <h3>Canto</h3>
-      <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
-      <div class="horarios">
-      <p>🕐 Lunes y miércoles 18 a 20hs</p>
-      <p>🕐 Viernes 19 a 21hs</p>
-      </div>
-      <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
-     </div>
-
-     <div class="actividad">
-      <span class="icono">♟️</span>
-      <h3>Ajedrez</h3>
-      <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
-      <div class="horarios">
-      <p>🕐 Lunes y miércoles 18 a 20hs</p>
-      <p>🕐 Viernes 19 a 21hs</p>
-      </div>
-      <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
-     </div>
-
-     <div class="actividad">
-      <span class="icono">🧘</span>
-      <h3>Yoga</h3>
-      <button class="btn-horarios" onclick="toggleHorarios(this)">Ver horarios</button>
-      <div class="horarios">
-      <p>🕐 Lunes y miércoles 18 a 20hs</p>
-      <p>🕐 Viernes 19 a 21hs</p>
-      </div>
-      <a href="https://instagram.com" target="_blank">Ver en Instagram</a>
-     </div>
-
-     </div>
-   </section>
 
    <section id="nosotros">
      <h2>Nosotros</h2>
@@ -232,71 +74,6 @@ Pagina de actividades con grilla y buscador, cada una abre en una ventana (horar
 
      </div>
    </section>
-
-    <section id="servicios">
-     <h2>Beneficios de ser socio</h2>
-     <div class="servicios-grid">
-
-      <div class="servicio">
-      <img src="imagenes/entrenamiento.jpg" alt="Entrenamiento semipersonalizado">
-      <div class="servicio-texto">
-        <h3>Entrenamiento semipersonalizado</h3>
-        <p>Nuestros profesores te guían y adaptan los entrenamientos a tus objetivos personales.</p>
-      </div>
-     </div>
-
-      <div class="servicio">
-       <img src="imagenes/nutricion.jpg" alt="Descuento en nutrición">
-        <div class="servicio-texto">
-         <h3>Descuento en nutrición</h3>
-         <p>Accedé a consultas nutricionales con descuento exclusivo para socios del club.</p>
-       </div>
-      </div>
-
-      <div class="servicio">
-       <img src="imagenes/instalaciones.jpg" alt="Acceso libre a las instalaciones">
-       <div class="servicio-texto">
-         <h3>Acceso libre a las instalaciones</h3>
-         <p>Como socio podés usar todas las instalaciones del club cuando quieras.</p>
-       </div>
-      </div>
-
-      </div>
-    </section>
-
-   <section id="contacto">
-     <h2>Contacto</h2>
-    <div class="contacto-grid">
-
-     <div class="contacto-info">
-      <h3>Encontranos en</h3>
-      <p>📍 Calle Falsa 123, La Plata, Buenos Aires</p>
-      <p>📞 (221) 000-0000</p>
-      <p>📧 contacto@clubtipazo.com</p>
-     <div class="redes">
-      <a href="https://instagram.com" target="_blank">Instagram general</a>
-     </div>
-
-     <h3 style="margin-top: 30px;">Escribinos</h3>
-      <div class="formulario">
-         <input type="text" placeholder="Tu nombre" id="nombre">
-         <input type="email" placeholder="Tu email" id="email">
-         <textarea placeholder="Tu mensaje" id="mensaje"></textarea>
-         <button onclick="enviarFormulario()">Enviar mensaje</button>
-         <p id="respuesta"></p>
-        </div>
-     </div>
-
-     <div class="contacto-mapa">
-       <iframe
-         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.2!2d-57.9533!3d-34.9214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDU1JzE3LjAiUyA1N8KwNTcnMTIuMCJX!5e0!3m2!1ses!2sar"
-         width="100%"
-         height="300"
-         style="border:0; border-radius: 10px;"
-         allowfullscreen=""
-         loading="lazy">
-       </iframe>
-     </div>
 
     </div>
    </section>
