@@ -11,7 +11,7 @@ Pagina de actividades con grilla y buscador, cada una abre en una ventana (horar
 cambiar nombre de las imagenes
 bajar la sombra de los logos
 
-
+carrusel (cancha, campito, chusiano, recepcion, viejito) posible, cancha padel, fachada
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -48,6 +48,25 @@ bajar la sombra de los logos
      </div>
     </nav>
 
+    <div class="carrusel">
+      <div class="carrusel-slides">
+       <img src="imagenes/carrusel/Gente.png" alt="Gente del club" class="carrusel-img activa">
+       <img src="imagenes/carrusel/Cancha.png" alt="Cancha del club" class="carrusel-img">
+       <img src="imagenes/carrusel/Campito.png" alt="Campito del club" class="carrusel-img">
+       <img src="imagenes/carrusel/Fachada.png" alt="Fachada del club" class="carrusel-img">
+     </div>
+ 
+      <button class="carrusel-flecha izquierda" onclick="cambiarSlide(-1)">‹</button>
+      <button class="carrusel-flecha derecha" onclick="cambiarSlide(1)">›</button>
+
+      <div class="carrusel-puntos">
+       <span class="punto activo" onclick="irASlide(0)"></span>
+       <span class="punto" onclick="irASlide(1)"></span>
+       <span class="punto" onclick="irASlide(2)"></span>
+       <span class="punto" onclick="irASlide(3)"></span>
+      </div>
+    </div>
+
    <section id="nosotros">
      <h2>Nosotros</h2>
      <div class="nosotros-grid">
@@ -75,21 +94,25 @@ bajar la sombra de los logos
      </div>
    </section>
 
-    </div>
+   <section id="sponsor-cta">
+     <h2>Sumate como sponsor</h2>
+     <p>Acompañá a Club Tipazo y llegá a toda nuestra comunidad. Tenemos distintos planes según tu alcance e inversión.</p>
+     <a href="contacto.html" class="sponsor-btn">Quiero ser sponsor</a>
    </section>
 
     <footer>
+     <div class="footer-sponsors">
+       <p class="footer-sponsors-label">Sponsors</p>
+       <div class="footer-sponsors-logos">
+         <img src="https://placehold.co/100x60/222/d4af37?text=Sponsor+1" alt="Sponsor Diamante 1">
+         <img src="https://placehold.co/100x60/222/d4af37?text=Sponsor+2" alt="Sponsor Diamante 2">
+         <img src="https://placehold.co/100x60/222/d4af37?text=Sponsor+3" alt="Sponsor Diamante 3">
+       </div>
+     </div>
       <p>© 2025 Club Tipazo</p>
     </footer>
 
     <script src="script.js"></script>
-     <div class="modal-overlay" id="modalOverlay" onclick="cerrarModal()">
-       <div class="modal-contenido" onclick="event.stopPropagation()">
-       <button class="modal-cerrar" onclick="cerrarModal()">✕</button>
-       <h3 id="modal-titulo"></h3>
-        <div id="modal-cuerpo"></div>
-      </div>
-    </div>
 
   </body>
 </html>

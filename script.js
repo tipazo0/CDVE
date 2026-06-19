@@ -38,3 +38,33 @@ function cerrarMenu() {
   const links = document.getElementById('nav-links');
   links.classList.remove('abierto');
 }
+
+let slideActual = 0;
+const totalSlides = 4;
+
+function mostrarSlide(index) {
+  const imagenes = document.querySelectorAll('.carrusel-img');
+  const puntos = document.querySelectorAll('.punto');
+
+  imagenes.forEach(img => img.classList.remove('activa'));
+  puntos.forEach(punto => punto.classList.remove('activo'));
+
+  imagenes[index].classList.add('activa');
+  puntos[index].classList.add('activo');
+}
+
+function cambiarSlide(direccion) {
+  slideActual += direccion;
+  if (slideActual < 0) slideActual = totalSlides - 1;
+  if (slideActual >= totalSlides) slideActual = 0;
+  mostrarSlide(slideActual);
+}
+
+function irASlide(index) {
+  slideActual = index;
+  mostrarSlide(slideActual);
+}
+
+setInterval(() => {
+  cambiarSlide(1);
+}, 5000);
