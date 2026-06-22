@@ -10,6 +10,7 @@ Unir la seccion de servicios con la de socios
 Pagina de actividades con grilla y buscador, cada una abre en una ventana (horarios, precio, ig, wsp con link directo)
 cambiar nombre de las imagenes
 bajar la sombra de los logos
+añadir secretaria a la seccion de contacto y la de socios
 
 carrusel (cancha, campito, chusiano, recepcion, viejito) posible, cancha padel, fachada
 <!DOCTYPE html>
@@ -39,21 +40,22 @@ carrusel (cancha, campito, chusiano, recepcion, viejito) posible, cancha padel, 
         </div>
         <button class="nav-hamburguesa" onclick="toggleMenu()">☰</button>
        <div class="nav-links" id="nav-links">
-         <a href="actividades.html" onclick="cerrarMenu()">ACTIVIDADES</a>
-         <a href="nosotros.html" onclick="cerrarMenu()">NOSOTROS</a>
-         <a href="servicios.html" onclick="cerrarMenu()">SERVICIOS</a>
-         <a href="Contactos.html" onclick="cerrarMenu()">CONTACTO</a>
-         <a href="granitodearena.html" onclick="cerrarMenu()">GRANITO DE ARENA</a>
+         <a href="actividades.html" onclick="cerrarMenu()">Actividades</a>
+         <a href="#nosotros" onclick="cerrarMenu()">Nosotros</a>
+         <a href="servicios.html" onclick="cerrarMenu()">Servicios</a>
+         <a href="socios.html" onclick="cerrarMenu()">Socios</a>
+         <a href="contacto.html" onclick="cerrarMenu()">Contacto</a>
+         <a href="granitodearena.html" onclick="cerrarMenu()">Granito de Arena</a>
        </div>
      </div>
     </nav>
 
     <div class="carrusel">
       <div class="carrusel-slides">
-       <img src="imagenes/Carrusel/Gente.png" alt="Gente del club" class="carrusel-img activa">
-       <img src="imagenes/Carrusel/Cancha.png" alt="Cancha del club" class="carrusel-img">
-       <img src="imagenes/Carrusel/Campito.png" alt="Campito del club" class="carrusel-img">
-       <img src="imagenes/Carrusel/Fachada.png" alt="Fachada del club" class="carrusel-img">
+       <img src="imagenes/carrusel/gente.png" alt="Gente del club" class="carrusel-img activa">
+       <img src="imagenes/carrusel/cancha.png" alt="Cancha del club" class="carrusel-img">
+       <img src="imagenes/carrusel/campito.png" alt="Campito del club" class="carrusel-img">
+       <img src="imagenes/carrusel/fachada.png" alt="Fachada del club" class="carrusel-img">
      </div>
  
       <button class="carrusel-flecha izquierda" onclick="cambiarSlide(-1)">‹</button>
