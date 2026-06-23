@@ -1,3 +1,6 @@
+/* ===================================
+   RESET Y BASE
+=================================== */
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +12,10 @@ body {
   color: #333;
 }
 
+
+/* ===================================
+   HEADER (home y páginas internas)
+=================================== */
 header {
   background-image: url('imagenes/foto fondo.jpg');
   background-size: cover;
@@ -43,6 +50,7 @@ header p {
   color: #aaa;
 }
 
+/* Header chico de páginas internas (actividades, servicios, etc.) */
 .header-chico {
   padding: 0;
 }
@@ -56,6 +64,10 @@ header p {
   font-size: 36px;
 }
 
+
+/* ===================================
+   NAV
+=================================== */
 nav {
   background-color: #222;
   padding: 10px 20px;
@@ -113,6 +125,10 @@ nav {
   cursor: pointer;
 }
 
+
+/* ===================================
+   ESTRUCTURA GENERAL DE SECTION
+=================================== */
 section {
   padding: 60px 20px;
   max-width: 1200px;
@@ -126,6 +142,10 @@ section h2 {
   margin-bottom: 10px;
 }
 
+
+/* ===================================
+   FOOTER
+=================================== */
 footer {
   background-color: #111;
   color: #aaa;
@@ -133,12 +153,54 @@ footer {
   padding: 20px;
 }
 
+.footer-sponsors {
+  margin-bottom: 20px;
+}
+
+.footer-sponsors-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.footer-sponsors-logos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-sponsors-logos img {
+  height: 50px;
+  width: auto;
+  border-radius: 4px;
+}
+
+
+/* ===================================
+   ACTIVIDADES (grilla + tarjetas)
+=================================== */
 .grilla-actividades {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   margin-top: 30px;
   justify-content: center;
+}
+
+.actividad {
+  background-color: #f5f5f5;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: border 0.2s;
+}
+
+.actividad:hover {
+  border: 2px solid #d4af37;
 }
 
 .actividad img {
@@ -155,23 +217,6 @@ footer {
   margin-bottom: 10px;
 }
 
-.actividad {
-  background-color: #f5f5f5;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  padding: 30px 20px;
-  text-align: center;
-  transition: border 0.2s;
-}
-
-.actividad:hover {
-  border: 2px solid #d4af37;
-}
-
-.icono {
-  font-size: 48px;
-}
-
 .actividad h3 {
   margin-top: 10px;
   font-size: 18px;
@@ -186,6 +231,7 @@ footer {
   font-weight: bold;
 }
 
+/* Panel de horarios (versión vieja sin modal, por si la usás en algún lado) */
 .horarios {
   display: none;
   background-color: #f0f0f0;
@@ -217,46 +263,10 @@ footer {
   color: #111;
 }
 
-#servicios {
-  background-color: #f9f9f9;
-}
 
-.servicios-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
-  margin-top: 30px;
-}
-
-.servicio {
-  background-color: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.servicio img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.servicio-texto {
-  padding: 20px;
-}
-
-.servicio-texto h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #111;
-}
-
-.servicio-texto p {
-  font-size: 15px;
-  color: #666;
-  line-height: 1.6;
-}
-
+/* ===================================
+   MODAL (horarios de actividades)
+=================================== */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -316,93 +326,54 @@ footer {
   margin-top: 16px;
 }
 
-.contacto-grid {
+
+/* ===================================
+   SERVICIOS (beneficios de socio)
+=================================== */
+#servicios {
+  background-color: #f9f9f9;
+}
+
+.servicios-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
   margin-top: 30px;
-  align-items: center;
 }
 
-.contacto-info h3 {
-  font-size: 22px;
-  margin-bottom: 16px;
-  color: #111;
+.servicio {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-.contacto-info p {
+.servicio img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.servicio-texto {
+  padding: 20px;
+}
+
+.servicio-texto h3 {
+  font-size: 18px;
   margin-bottom: 10px;
-  font-size: 16px;
-}
-
-.formulario {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 16px;
-}
-
-.formulario input,
-.formulario textarea {
-  padding: 10px;
-  border: 2px solid #ddd;
-  border-radius: 6px;
-  font-size: 15px;
-  font-family: 'Inter', Arial, sans-serif;
-  outline: none;
-}
-
-.formulario input:focus,
-.formulario textarea:focus {
-  border-color: #d4af37;
-}
-
-.formulario textarea {
-  height: 120px;
-  resize: vertical;
-}
-
-.formulario button {
-  background-color: #111;
-  color: #d4af37;
-  border: none;
-  padding: 12px;
-  border-radius: 6px;
-  font-size: 15px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.formulario button:hover {
-  background-color: #d4af37;
   color: #111;
 }
 
-#respuesta {
-  font-size: 14px;
-  color: green;
-  text-align: center;
+.servicio-texto p {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
 }
 
-.redes {
-  margin-top: 20px;
-}
 
-.redes a {
-  display: inline-block;
-  background-color: #111;
-  color: #d4af37;
-  padding: 10px 20px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.redes a:hover {
-  background-color: #d4af37;
-  color: #111;
-}
-
+/* ===================================
+   NOSOTROS
+=================================== */
 .nosotros-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -441,6 +412,108 @@ footer {
   margin-top: 4px;
 }
 
+
+/* ===================================
+   CONTACTO (info + mapa)
+=================================== */
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 30px;
+  align-items: center;
+}
+
+.contacto-info h3 {
+  font-size: 22px;
+  margin-bottom: 16px;
+  color: #111;
+}
+
+.contacto-info p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.redes {
+  margin-top: 20px;
+}
+
+.redes a {
+  display: inline-block;
+  background-color: #111;
+  color: #d4af37;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.redes a:hover {
+  background-color: #d4af37;
+  color: #111;
+}
+
+
+/* ===================================
+   FORMULARIOS (contacto + inscripción)
+=================================== */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.formulario input,
+.formulario textarea,
+.formulario select {
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: 'Inter', Arial, sans-serif;
+  outline: none;
+  background-color: white;
+}
+
+.formulario input:focus,
+.formulario textarea:focus,
+.formulario select:focus {
+  border-color: #d4af37;
+}
+
+.formulario textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.formulario button {
+  background-color: #111;
+  color: #d4af37;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.formulario button:hover {
+  background-color: #d4af37;
+  color: #111;
+}
+
+#respuesta {
+  font-size: 14px;
+  color: green;
+  text-align: center;
+}
+
+
+/* ===================================
+   CARRUSEL (home)
+=================================== */
 .carrusel {
   position: relative;
   width: 100%;
@@ -514,6 +587,159 @@ footer {
   background-color: #d4af37;
 }
 
+/* ===================================
+   NOTICIAS (slider de posts)
+=================================== */
+#noticias {
+  max-width: 1200px;
+}
+
+.noticias-wrapper {
+  position: relative;
+  margin-top: 30px;
+}
+
+.noticias-overflow {
+  overflow: hidden;
+  width: 100%;
+}
+
+.noticias-contenedor {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.3s ease;
+  width: max-content;
+}
+
+.noticias-contenedor.sin-transicion {
+  transition: none;
+}
+
+.noticia-card {
+  min-width: 300px;
+  width: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  transition: transform 0.2s;
+  text-decoration: none;
+  color: #111;
+  flex-shrink: 0;
+}
+
+.noticia-card:hover {
+  transform: translateY(-4px);
+}
+
+.noticia-card img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.noticia-info {
+  padding: 12px;
+}
+
+.noticia-fecha {
+  font-size: 13px;
+  color: #888;
+}
+
+.noticias-flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #111;
+  color: #d4af37;
+  border: none;
+  font-size: 28px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.2s;
+}
+
+.noticias-flecha:hover {
+  background-color: #d4af37;
+  color: #111;
+}
+
+.noticias-flecha.izquierda {
+  left: -20px;
+}
+
+.noticias-flecha.derecha {
+  right: -20px;
+}
+
+/* ===================================
+   SOCIOS (aranceles + inscripción)
+=================================== */
+.aranceles-intro {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.cuota-socio {
+  background-color: #111;
+  color: white;
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.cuota-socio h3 {
+  font-size: 18px;
+  color: #d4af37;
+  margin-bottom: 10px;
+}
+
+.precio {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.precio span {
+  font-size: 16px;
+  font-weight: normal;
+  color: #aaa;
+}
+
+.tabla-aranceles {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-aranceles th,
+.tabla-aranceles td {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.tabla-aranceles th {
+  background-color: #111;
+  color: #d4af37;
+}
+
+.tabla-aranceles tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#inscripcion {
+  background-color: #f9f9f9;
+}
+
+
+/* ===================================
+   SPONSORS (CTA en home)
+=================================== */
 #sponsor-cta {
   text-align: center;
   background-color: #111;
@@ -545,61 +771,41 @@ footer {
   background-color: white;
 }
 
-.footer-sponsors {
-  margin-bottom: 20px;
-}
 
-.footer-sponsors-label {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #777;
-  margin-bottom: 12px;
-}
-
-.footer-sponsors-logos {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.footer-sponsors-logos img {
-  height: 50px;
-  width: auto;
-  border-radius: 4px;
-}
-
+/* ===================================
+   MEDIA QUERIES (responsive - celular)
+=================================== */
 @media (max-width: 600px) {
 
   .nav-hamburguesa {
-   display: block;
+    display: block;
   }
 
   .nav-nombre {
-   display: none;
+    display: none;
   }
 
   .nav-links {
-   display: none;
-   position: absolute;
-   top: 56px;
-   left: 0;
-   width: 100%;
-   background-color: #222;
-   flex-direction: column;
-   padding: 10px 0;
+    display: none;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    width: 100%;
+    background-color: #222;
+    flex-direction: column;
+    padding: 10px 0;
   }
 
- .nav-links.abierto {
-   display: flex;
+  .nav-links.abierto {
+    display: flex;
   }
 
   .nav-links a {
-   padding: 12px 20px;
-   margin: 0;
-   border-bottom: 1px solid #333;
+    padding: 12px 20px;
+    margin: 0;
+    border-bottom: 1px solid #333;
   }
+
   .nosotros-grid {
     grid-template-columns: 1fr;
   }
@@ -621,5 +827,18 @@ footer {
     justify-content: space-between;
   }
 
-  
+}
+
+@media (max-width: 600px) {
+  .noticia-card {
+    min-width: 100%;
+  }
+
+  .noticias-flecha.izquierda {
+    left: 0;
+  }
+
+  .noticias-flecha.derecha {
+    right: 0;
+  }
 }

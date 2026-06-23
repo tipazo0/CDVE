@@ -32,7 +32,73 @@
       </div>
     </nav>
 
-    <!-- ACÁ VA EL CONTENIDO DE CADA PÁGINA -->
+    <section id="aranceles">
+  <h2>Aranceles</h2>
+  <p class="aranceles-intro">La cuota de socio es independiente del costo de cada actividad.</p>
+
+  <div class="cuota-socio">
+    <h3>Cuota de socio</h3>
+    <p class="precio">$9.000<span>/mes</span></p>
+  </div>
+
+  <table class="tabla-aranceles">
+    <thead>
+      <tr>
+        <th>Actividad</th>
+        <th>Precio mensual</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Básquet</td><td>$22.000</td></tr>
+      <tr><td>Patín</td><td>$30.000</td></tr>
+      <tr><td>Tenis</td><td>Consultar</td></tr>
+      <tr><td>Pádel</td><td>Consultar</td></tr>
+      <tr><td>Handball</td><td>Consultar</td></tr>
+      <tr><td>Vóley</td><td>Consultar</td></tr>
+      <tr><td>Ping Pong</td><td>Consultar</td></tr>
+      <tr><td>Taekwondo</td><td>Consultar</td></tr>
+      <tr><td>Kung Fu</td><td>Consultar</td></tr>
+      <tr><td>Gimnasia Artística</td><td>Consultar</td></tr>
+      <tr><td>Baile</td><td>Consultar</td></tr>
+      <tr><td>Canto</td><td>Consultar</td></tr>
+      <tr><td>Ajedrez</td><td>Consultar</td></tr>
+      <tr><td>Yoga</td><td>Consultar</td></tr>
+    </tbody>
+  </table>
+  </section>
+
+   <section id="inscripcion">
+    <h2>Formulario de inscripción</h2>
+    <div class="formulario">
+     <input type="text" placeholder="Nombre y apellido" id="insc-nombre">
+     <input type="text" placeholder="DNI" id="insc-dni">
+     <input type="date" placeholder="Fecha de nacimiento" id="insc-nacimiento">
+     <input type="tel" placeholder="Teléfono" id="insc-telefono">
+     <input type="email" placeholder="Email" id="insc-email">
+
+     <select id="insc-actividad">
+       <option value="">Seleccioná una actividad</option>
+       <option value="Básquet">Básquet</option>
+       <option value="Tenis">Tenis</option>
+       <option value="Ping Pong">Ping Pong</option>
+       <option value="Handball">Handball</option>
+       <option value="Vóley">Vóley</option>
+       <option value="Pádel">Pádel</option>
+       <option value="Taekwondo">Taekwondo</option>
+       <option value="Kung Fu">Kung Fu</option>
+       <option value="Gimnasia Artística">Gimnasia Artística</option>
+       <option value="Patín">Patín</option>
+       <option value="Baile">Baile</option>
+       <option value="Canto">Canto</option>
+       <option value="Ajedrez">Ajedrez</option>
+       <option value="Yoga">Yoga</option>
+      </select>
+
+       <textarea placeholder="Mensaje (opcional)" id="insc-mensaje"></textarea>
+       <button onclick="enviarInscripcion()">Enviar inscripción</button>
+       <p id="insc-respuesta"></p>
+    </div>
+  </section>
 
     <footer>
      <div class="footer-sponsors">
