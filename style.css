@@ -9,9 +9,70 @@
 
 body {
   font-family: 'Inter', Arial, sans-serif;
-  color: #333;
+  color: #e4e2e2;
+  background-color: #111;
+  position: relative;
+  overflow-x: hidden;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #111;
+  overflow: hidden;
+}
+
+.mancha {
+  position: fixed;
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 70%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.mancha-1 {
+  width: 600px;
+  height: 300px;
+  background-color: white;
+  opacity: 0.04;
+  top: -100px;
+  left: -200px;
+  transform: rotate(-30deg);
+}
+
+.mancha-2 {
+  width: 400px;
+  height: 200px;
+  background-color: #d4af37;
+  opacity: 0.06;
+  top: 200px;
+  right: -150px;
+  transform: rotate(20deg);
+}
+
+.mancha-3 {
+  width: 700px;
+  height: 250px;
+  background-color: white;
+  opacity: 0.03;
+  bottom: 300px;
+  left: -100px;
+  transform: rotate(15deg);
+}
+
+.mancha-4 {
+  width: 500px;
+  height: 180px;
+  background-color: #d4af37;
+  opacity: 0.05;
+  bottom: 100px;
+  right: -200px;
+  transform: rotate(-25deg);
+}
 
 /* ===================================
    HEADER (home y páginas internas)
@@ -69,7 +130,7 @@ header p {
    NAV
 =================================== */
 nav {
-  background-color: #222;
+  background-color: #111;
   padding: 10px 20px;
   position: sticky;
   top: 0;
@@ -133,6 +194,8 @@ section {
   padding: 60px 20px;
   max-width: 1200px;
   margin: 0 auto;
+  background-color: rgba(10, 8, 8, 0.97);
+  border-radius: 12px;
 }
 
 section h2 {
@@ -191,7 +254,7 @@ footer {
 }
 
 .actividad {
-  background-color: #f5f5f5;
+  background-color: #686767;
   border: 2px solid transparent;
   border-radius: 10px;
   padding: 30px 20px;
@@ -366,7 +429,7 @@ footer {
 
 .servicio-texto p {
   font-size: 15px;
-  color: #666;
+  color: #bdbdbd;
   line-height: 1.6;
 }
 
@@ -386,7 +449,7 @@ footer {
   font-size: 16px;
   line-height: 1.8;
   margin-bottom: 16px;
-  color: #555;
+  color: #bdbdbd;
 }
 
 .nosotros-numeros {
