@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Socios | Club Tipazo</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --gold: #d4af37;
+    --bg: #0a0a0a;
+    --panel: rgba(255, 255, 255, 0.04);
+    --panel-border: rgba(212, 175, 55, 0.25);
+    --text: #f2f2f2;
+    --text-dim: #b8b8b8;
+    --green: #7fbf7f;
+    --red: #e07a7a;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    padding: 40px 24px;
+  }
+
+  .wrap {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    margin: 0 0 28px;
+    text-align: center;
+  }
+
+  #estado-carga, #estado-error {
+    text-align: center;
+    color: var(--text-dim);
+  }
+
+  #estado-error { color: var(--red); }
+
+  #contenido { display: none; }
+
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 28px;
+  }
+
+  .panel h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin: 0 0 18px;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 5px;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+  }
+
+  input:focus, select:focus {
+    outline: 2px solid var(--gold);
+    outline-offset: 1px;
+  }
+
+  button {
+    padding: 10px 20px;
+    background: var(--gold);
+    color: #0a0a0a;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor: pointer;
+  }
+
+  button:hover { opacity: 0.88; }
+
+  button.secundario {
+    background: transparent;
+    border: 1px solid var(--panel-border);
+    color: var(--text-dim);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  th {
+    text-align: left;
+    color: var(--text-dim);
+    font-weight: 500;
+    font-size: 0.8rem;
+    padding: 8px;
+    border-bottom: 1px solid var(--panel-border);
+  }
+
+  td {
+    padding: 10px 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .badge {
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  .badge.al_dia { background: rgba(127, 191, 127, 0.15); color: var(--green); }
+  .badge.pendiente { background: rgba(224, 122, 122, 0.15); color: var(--red); }
+
+  .acciones button {
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    margin-right: 6px;
+  }
+
+  .acciones button.eliminar {
+    background: transparent;
+    border: 1px solid var(--red);
+    color: var(--red);
+  }
+
+  #msg-form {
+    font-size: 0.85rem;
+    margin-top: 10px;
+    min-height: 18px;
+  }
+
+  #msg-form.ok { color: var(--gold); }
+  #msg-form.error { color: var(--red); }
+
+  .top-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <h1>Administración de Socios</h1>
+
+  <p id="estado-carga">Verificando acceso...</p>
+  <p id="estado-error" style="display:none;"></p>
+
+  <div id="contenido">
+    <div class="top-bar">
+      <button class="secundario" id="btn-salir">Cerrar sesión</button>
+    </div>
+
+    <div class="panel">
+      <h2 id="titulo-form">Agregar socio</h2>
+      <form id="form-socio">
+        <input type="hidden" id="socio-id">
+        <div class="form-grid">
+          <div>
+            <label for="socio-email">Email</label>
+            <input type="email" id="socio-email" required>
+          </div>
+          <div>
+            <label for="socio-nombre">Nombre</label>
+            <input type="text" id="socio-nombre">
+          </div>
+          <div>
+            <label for="socio-actividad">Actividad</label>
+            <input type="text" id="socio-actividad">
+          </div>
+          <div>
+            <label for="socio-cuota">Estado de cuota</label>
+            <select id="socio-cuota">
+              <option value="pendiente">Pendiente</option>
+              <option value="al_dia">Al día</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" id="btn-guardar">Agregar socio</button>
+        <button type="button" class="secundario" id="btn-cancelar" style="display:none;">Cancelar edición</button>
+        <p id="msg-form"></p>
+      </form>
+    </div>
+
+    <div class="panel">
+      <h2>Listado de socios</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Actividad</th>
+            <th>Cuota</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-socios"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+<script>
+  // ===== CONFIGURACIÓN =====
+  // Mismos valores que en login.html y panel.html
+  const SUPABASE_URL = 'PEGAR_ACA_TU_PROJECT_URL';
+  const SUPABASE_PUBLISHABLE_KEY = 'PEGAR_ACA_TU_PUBLISHABLE_KEY';
+
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+  const estadoCarga = document.getElementById('estado-carga');
+  const estadoError = document.getElementById('estado-error');
+  const contenido = document.getElementById('contenido');
+  const tabla = document.getElementById('tabla-socios');
+  const form = document.getElementById('form-socio');
+  const msgForm = document.getElementById('msg-form');
+  const btnGuardar = document.getElementById('btn-guardar');
+  const btnCancelar = document.getElementById('btn-cancelar');
+  const tituloForm = document.getElementById('titulo-form');
+
+  function mostrarError(msg) {
+    estadoCarga.style.display = 'none';
+    estadoError.style.display = 'block';
+    estadoError.textContent = msg;
+  }
+
+  // ===== 1. Verificar sesión y que sea admin =====
+  async function iniciar() {
+    const { data: { session } } = await supabaseClient.auth.getSession();
+
+    if (!session) {
+      window.location.href = 'login.html';
+      return;
+    }
+
+    // Consultamos nuestra propia fila para saber si somos admin.
+    // Esto es solo para decidir qué mostrar en pantalla (UX).
+    // La seguridad real la sigue garantizando la política de RLS en la base.
+    const { data: yo } = await supabaseClient
+      .from('socios')
+      .select('rol')
+      .eq('email', session.user.email)
+      .single();
+
+    if (!yo || yo.rol !== 'admin') {
+      mostrarError('No tenés permisos para ver esta página.');
+      return;
+    }
+
+    estadoCarga.style.display = 'none';
+    contenido.style.display = 'block';
+    cargarSocios();
+  }
+
+  // ===== 2. Traer y pintar la lista de socios =====
+  async function cargarSocios() {
+    const { data: socios, error } = await supabaseClient
+      .from('socios')
+      .select('*')
+      .order('nombre');
+
+    if (error) {
+      tabla.innerHTML = `<tr><td colspan="5">Error al cargar los socios.</td></tr>`;
+      return;
+    }
+
+    tabla.innerHTML = socios.map(s => `
+      <tr>
+        <td>${s.nombre || '—'}</td>
+        <td>${s.email}</td>
+        <td>${s.actividad || '—'}</td>
+        <td><span class="badge ${s.estado_cuota === 'al_dia' ? 'al_dia' : 'pendiente'}">
+          ${s.estado_cuota === 'al_dia' ? 'Al día' : 'Pendiente'}
+        </span></td>
+        <td class="acciones">
+          <button type="button" class="editar" data-id="${s.id}">Editar</button>
+          <button type="button" class="eliminar" data-id="${s.id}">Eliminar</button>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  // ===== 3. Agregar o editar (mismo formulario) =====
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const id = document.getElementById('socio-id').value;
+    const datos = {
+      email: document.getElementById('socio-email').value.trim(),
+      nombre: document.getElementById('socio-nombre').value.trim(),
+      actividad: document.getElementById('socio-actividad').value.trim(),
+      estado_cuota: document.getElementById('socio-cuota').value
+    };
+
+    let error;
+    if (id) {
+      // Ya tiene id: es una edición
+      ({ error } = await supabaseClient.from('socios').update(datos).eq('id', id));
+    } else {
+      // Sin id: es un socio nuevo
+      ({ error } = await supabaseClient.from('socios').insert(datos));
+    }
+
+    if (error) {
+      msgForm.textContent = 'Error: ' + error.message;
+      msgForm.className = 'error';
+      return;
+    }
+
+    msgForm.textContent = id ? 'Socio actualizado.' : 'Socio agregado.';
+    msgForm.className = 'ok';
+    resetearFormulario();
+    cargarSocios();
+  });
+
+  function resetearFormulario() {
+    form.reset();
+    document.getElementById('socio-id').value = '';
+    tituloForm.textContent = 'Agregar socio';
+    btnGuardar.textContent = 'Agregar socio';
+    btnCancelar.style.display = 'none';
+  }
+
+  btnCancelar.addEventListener('click', resetearFormulario);
+
+  // ===== 4 y 5. Editar y Eliminar: un solo listener en la tabla,
+  // que detecta en qué botón se hizo clic (delegación de eventos).
+  // Esto evita colgar funciones de "window" y separa mejor el
+  // comportamiento (JS) de la estructura (HTML).
+  tabla.addEventListener('click', async (e) => {
+    const boton = e.target.closest('button');
+    if (!boton) return; // el clic no fue sobre un botón
+
+    const id = boton.dataset.id;
+
+    if (boton.classList.contains('editar')) {
+      const { data: s, error } = await supabaseClient
+        .from('socios')
+        .select('*')
+        .eq('id', id)
+        .single();
+
+      if (error || !s) return;
+
+      document.getElementById('socio-id').value = s.id;
+      document.getElementById('socio-email').value = s.email;
+      document.getElementById('socio-nombre').value = s.nombre || '';
+      document.getElementById('socio-actividad').value = s.actividad || '';
+      document.getElementById('socio-cuota').value = s.estado_cuota || 'pendiente';
+
+      tituloForm.textContent = 'Editar socio';
+      btnGuardar.textContent = 'Guardar cambios';
+      btnCancelar.style.display = 'inline-block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    if (boton.classList.contains('eliminar')) {
+      if (!confirm('¿Seguro que querés eliminar este socio?')) return;
+
+      const { error } = await supabaseClient.from('socios').delete().eq('id', id);
+      if (error) {
+        alert('Error al eliminar: ' + error.message);
+        return;
+      }
+      cargarSocios();
+    }
+  });
+
+  document.getElementById('btn-salir').addEventListener('click', async () => {
+    await supabaseClient.auth.signOut();
+    window.location.href = 'login.html';
+  });
+
+  iniciar();
+</script>
+
+</body>
+</html>
