@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Cuenta | Club Tipazo</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --gold: #d4af37;
+    --bg: #0a0a0a;
+    --panel: rgba(255, 255, 255, 0.04);
+    --panel-border: rgba(212, 175, 55, 0.25);
+    --text: #f2f2f2;
+    --text-dim: #b8b8b8;
+    --green: #7fbf7f;
+    --red: #e07a7a;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 460px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 40px 32px;
+    backdrop-filter: blur(6px);
+  }
+
+  .card h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin: 0 0 28px;
+    text-align: center;
+  }
+
+  .fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .fila:last-of-type { border-bottom: none; }
+
+  .fila .label {
+    color: var(--text-dim);
+    font-size: 0.88rem;
+  }
+
+  .fila .valor {
+    font-weight: 500;
+    text-align: right;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .badge.al_dia { background: rgba(127, 191, 127, 0.15); color: var(--green); }
+  .badge.pendiente { background: rgba(224, 122, 122, 0.15); color: var(--red); }
+
+  #estado-carga, #estado-error {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+
+  #estado-error { color: var(--red); }
+
+  button#btn-salir {
+    width: 100%;
+    margin-top: 28px;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    color: var(--text-dim);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  button#btn-salir:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  #contenido { display: none; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Mi Cuenta</h1>
+
+  <p id="estado-carga">Verificando tu acceso...</p>
+  <p id="estado-error" style="display:none;"></p>
+
+  <div id="contenido">
+    <div class="fila">
+      <span class="label">Nombre</span>
+      <span class="valor" id="dato-nombre">—</span>
+    </div>
+    <div class="fila">
+      <span class="label">Actividad</span>
+      <span class="valor" id="dato-actividad">—</span>
+    </div>
+    <div class="fila">
+      <span class="label">Estado de cuota</span>
+      <span class="valor"><span class="badge" id="dato-cuota">—</span></span>
+    </div>
+
+    <button id="btn-salir">Cerrar sesión</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+<script>
+  // ===== CONFIGURACIÓN =====
+  // Mismos valores que pegaste en login.html
+  const SUPABASE_URL = 'https://rjhhccpwdjpmflmqdnzo.supabase.co';
+  const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_dOun6cNxLV-EzDWe5kgczQ_MMEuYzuC';
+
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+  const estadoCarga = document.getElementById('estado-carga');
+  const estadoError = document.getElementById('estado-error');
+  const contenido = document.getElementById('contenido');
+
+  function mostrarError(msg) {
+    estadoCarga.style.display = 'none';
+    estadoError.style.display = 'block';
+    estadoError.textContent = msg;
+  }
+
+  async function iniciar() {
+    // Paso 1: preguntarle a Supabase si hay una sesión activa.
+    // El cliente ya procesó automáticamente el token que venía en la URL
+    // (el link del mail), así que si todo salió bien, acá ya hay sesión.
+    const { data: { session } } = await supabaseClient.auth.getSession();
+
+    // Paso 2: si no hay sesión, esto es una "ruta protegida" —
+    // no dejamos ver el panel a nadie que no haya entrado por el login.
+    if (!session) {
+      window.location.href = 'login.html';
+      return;
+    }
+
+    const email = session.user.email;
+
+    // Paso 3: buscar en la tabla "socios" la fila que coincide con este email.
+    // Gracias a la política de RLS que armamos, esta consulta SOLO puede
+    // devolver la fila del propio usuario logueado, aunque no lo filtráramos
+    // acá explícitamente — es la base de datos la que lo garantiza.
+    const { data: socio, error } = await supabaseClient
+      .from('socios')
+      .select('nombre, actividad, estado_cuota')
+      .eq('email', email)
+      .single();
+
+    if (error || !socio) {
+      mostrarError('Tu email todavía no está cargado como socio. Contactate con la secretaría del club.');
+      return;
+    }
+
+    // Paso 4: mostrar los datos en pantalla.
+    document.getElementById('dato-nombre').textContent = socio.nombre || '—';
+    document.getElementById('dato-actividad').textContent = socio.actividad || '—';
+
+    const badgeCuota = document.getElementById('dato-cuota');
+    badgeCuota.textContent = socio.estado_cuota === 'al_dia' ? 'Al día' : 'Pendiente';
+    badgeCuota.className = 'badge ' + (socio.estado_cuota === 'al_dia' ? 'al_dia' : 'pendiente');
+
+    estadoCarga.style.display = 'none';
+    contenido.style.display = 'block';
+  }
+
+  document.getElementById('btn-salir').addEventListener('click', async () => {
+    await supabaseClient.auth.signOut();
+    window.location.href = 'login.html';
+  });
+
+  iniciar();
+</script>
+
+</body>
+</html>
