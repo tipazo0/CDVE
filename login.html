@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acceso Socios | Club Tipazo</title>
+
+<!-- Mismas tipografías que el resto del sitio -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --gold: #d4af37;
+    --bg: #0a0a0a;
+    --panel: rgba(255, 255, 255, 0.04);
+    --panel-border: rgba(212, 175, 55, 0.25);
+    --text: #f2f2f2;
+    --text-dim: #b8b8b8;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 40px 32px;
+    backdrop-filter: blur(6px);
+  }
+
+  .card h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin: 0 0 8px;
+    text-align: center;
+  }
+
+  .card p.subtitle {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    margin: 0 0 28px;
+    line-height: 1.5;
+  }
+
+  label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+
+  input[type="email"] {
+    width: 100%;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+  }
+
+  input[type="email"]:focus {
+    outline: 2px solid var(--gold);
+    outline-offset: 1px;
+    border-color: var(--gold);
+  }
+
+  button {
+    width: 100%;
+    padding: 13px;
+    background: var(--gold);
+    color: #0a0a0a;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+
+  button:hover { opacity: 0.88; }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  #mensaje {
+    margin-top: 18px;
+    font-size: 0.88rem;
+    text-align: center;
+    line-height: 1.5;
+    min-height: 20px;
+  }
+
+  #mensaje.ok { color: var(--gold); }
+  #mensaje.error { color: #e07a7a; }
+
+  .volver {
+    display: block;
+    text-align: center;
+    margin-top: 24px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    text-decoration: none;
+  }
+
+  .volver:hover { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Acceso Socios</h1>
+  <p class="subtitle">Ingresá tu email y te mandamos un enlace para entrar a tu cuenta. No necesitás contraseña.</p>
+
+  <form id="form-login">
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="tu@email.com" required>
+    <button type="submit" id="btn-enviar">Enviar enlace de acceso</button>
+  </form>
+
+  <div id="mensaje"></div>
+
+  <a href="index.html" class="volver">← Volver al inicio</a>
+</div>
+
+<!-- Librería oficial de Supabase, cargada desde CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+<script>
+  // ===== CONFIGURACIÓN =====
+  // Reemplazá estos dos valores con los tuyos:
+  // Dashboard → Settings (engranaje) → API Keys
+  //   - Project URL: arriba de la página
+  //   - Publishable key: pestaña "Publishable and secret API keys"
+  //     (Supabase le cambió el nombre a lo que antes era la "anon key")
+  const SUPABASE_URL = 'https://rjhhccpwdjpmflmqdnzo.supabase.co';
+  const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_dOun6cNxLV-EzDWe5kgczQ_MMEuYzuC';
+
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+  // ===== LÓGICA DEL FORMULARIO =====
+  const form = document.getElementById('form-login');
+  const btn = document.getElementById('btn-enviar');
+  const mensaje = document.getElementById('mensaje');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // evita que la página se recargue
+
+    const email = document.getElementById('email').value.trim();
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    mensaje.textContent = '';
+    mensaje.className = '';
+
+    // Esta es la función clave: le pide a Supabase que mande el magic link.
+    // No hace falta que nosotros programemos el envío del email ni la
+    // generación del token: Supabase se encarga de todo eso.
+    const { error } = await supabaseClient.auth.signInWithOtp({
+      email: email,
+      options: {
+        // A esta página vuelve el usuario después de tocar el link del mail.
+        // Por ahora apunta a panel.html (todavía no existe, la hacemos después).
+        emailRedirectTo: window.location.origin + '/panel.html'
+      }
+    });
+
+    btn.disabled = false;
+    btn.textContent = 'Enviar enlace de acceso';
+
+    if (error) {
+      mensaje.textContent = 'Hubo un problema. Verificá el email e intentá de nuevo.';
+      mensaje.className = 'error';
+      console.error(error);
+    } else {
+      mensaje.textContent = `Listo. Revisá ${email} y hacé clic en el enlace que te enviamos.`;
+      mensaje.className = 'ok';
+      form.reset();
+    }
+  });
+</script>
+
+</body>
+</html>
