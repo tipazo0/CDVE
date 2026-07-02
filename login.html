@@ -179,7 +179,7 @@
       options: {
         // A esta página vuelve el usuario después de tocar el link del mail.
         // Por ahora apunta a panel.html (todavía no existe, la hacemos después).
-        emailRedirectTo: window.location.origin + '/panel.html'
+        emailRedirectTo: new URL('panel.html', window.location.href).href
       }
     });
 
