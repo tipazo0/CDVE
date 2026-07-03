@@ -89,27 +89,27 @@ const postsEjemplo = [
   {
     imagen: "imagenes/basquet.webp",
     fecha: "15 de junio, 2025",
-    link: "https://instagram.com"
+    link: "https://www.instagram.com/eldepove/"
   },
   {
-    imagen: "imagenes/tenis.webp",
+    imagen: "imagenes/instagram/peña.png",
     fecha: "12 de junio, 2025",
-    link: "https://instagram.com"
+    link: "https://www.instagram.com/p/DY5Kemcv2Bd/"
   },
   {
     imagen: "imagenes/carrusel/gente.png",
     fecha: "10 de junio, 2025",
-    link: "https://instagram.com"
+    link: "https://www.instagram.com/eldepove/"
   },
   {
     imagen: "imagenes/carrusel/cancha.png",
     fecha: "8 de junio, 2025",
-    link: "https://instagram.com"
+    link: "https://www.instagram.com/eldepove/"
   },
   {
     imagen: "imagenes/carrusel/campito.png",
     fecha: "5 de junio, 2025",
-    link: "https://instagram.com"
+    link: "https://www.instagram.com/eldepove/"
   }
 ];
 

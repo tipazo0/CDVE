@@ -490,7 +490,7 @@ footer {
 .contacto-info h3 {
   font-size: 22px;
   margin-bottom: 16px;
-  color: #111;
+  color: #a5a3a3;
 }
 
 .contacto-info p {
@@ -504,8 +504,8 @@ footer {
 
 .redes a {
   display: inline-block;
-  background-color: #111;
-  color: #d4af37;
+  background-color: #919090;
+  color: #111;
   padding: 10px 20px;
   border-radius: 6px;
   text-decoration: none;
@@ -517,6 +517,15 @@ footer {
   color: #111;
 }
 
+#form-contacto button {
+  background-color: #919090;
+  color: #111;
+}
+
+#form-contacto button:hover {
+  background-color: #d4af37;
+  color: #111;
+}
 
 /* ===================================
    FORMULARIOS (contacto + inscripción)
@@ -839,6 +848,58 @@ footer {
   background-color: white;
 }
 
+/* ===================================
+   PANEL DE SOCIO
+=================================== */
+.fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.fila:last-of-type { border-bottom: none; }
+
+.fila .label {
+  color: #aaa;
+  font-size: 0.88rem;
+}
+
+.fila .valor {
+  font-weight: 500;
+  text-align: right;
+  color: white;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.badge.al_dia { background: rgba(127, 191, 127, 0.15); color: #7fbf7f; }
+.badge.pendiente { background: rgba(224, 122, 122, 0.15); color: #e07a7a; }
+
+button#btn-salir {
+  width: 100%;
+  margin-top: 28px;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 8px;
+  color: #aaa;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+button#btn-salir:hover {
+  border-color: #d4af37;
+  color: #d4af37;
+}
 
 /* ===================================
    MEDIA QUERIES (responsive - celular)

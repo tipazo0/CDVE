@@ -18,16 +18,17 @@
     <nav>
       <div class="nav-contenido">
         <div class="nav-marca">
-          <img src="imagenes/escudo.png" alt="Escudo" class="nav-escudo">
-          <span class="nav-nombre">Club Tipazo</span>
+          <img src="imagenes/logo.png" alt="Escudo" class="nav-escudo">
+          <span class="nav-nombre">Club Deportivo Villa Elisa</span>
         </div>
         <button class="nav-hamburguesa" onclick="toggleMenu()">☰</button>
         <div class="nav-links" id="nav-links">
-          <a href="index.html">Inicio</a>
-          <a href="actividades.html">Actividades</a>
-          <a href="servicios.html">Servicios</a>
-          <a href="socios.html">Socios</a>
-          <a href="contacto.html">Contacto</a>
+          <a href="index.html" onclick="cerrarMenu()">Inicio</a>
+         <a href="actividades.html" onclick="cerrarMenu()">Actividades</a>
+         <a href="socios.html" onclick="cerrarMenu()">Socios</a>
+         <a href="contacto.html" onclick="cerrarMenu()">Contacto</a>
+         <a href="login.html" onclick="cerrarMenu()">Login</a>
+         <a href="granitodearena.html" onclick="cerrarMenu()">Granito de Arena</a>
         </div>
       </div>
     </nav>
@@ -100,16 +101,48 @@
     </div>
   </section>
 
+   <section id="servicios">
+     <h2>Beneficios de ser socio</h2>
+     <div class="servicios-grid">
+
+      <div class="servicio">
+       <img src="imagenes/entrenamiento.jpg" alt="Entrenamiento semipersonalizado">
+       <div class="servicio-texto">
+         <h3>Entrenamiento semipersonalizado</h3>
+         <p>Nuestros profesores te guían y adaptan los entrenamientos a tus objetivos personales.</p>
+       </div>
+     </div>
+
+      <div class="servicio">
+       <img src="imagenes/nutricion.jpg" alt="Descuento en nutrición">
+        <div class="servicio-texto">
+         <h3>Descuento en nutrición</h3>
+         <p>Accedé a consultas nutricionales con descuento exclusivo para socios del club.</p>
+       </div>
+      </div>
+
+      <div class="servicio">
+       <img src="imagenes/instalaciones.jpg" alt="Acceso libre a las instalaciones">
+       <div class="servicio-texto">
+         <h3>Acceso libre a las instalaciones</h3>
+         <p>Como socio podés usar todas las instalaciones del club cuando quieras.</p>
+       </div>
+      </div>
+
+      </div>
+    </section>
+
     <footer>
      <div class="footer-sponsors">
        <p class="footer-sponsors-label">Sponsors</p>
        <div class="footer-sponsors-logos">
-         <img src="https://placehold.co/100x60/222/d4af37?text=Sponsor+1" alt="Sponsor Diamante 1">
-         <img src="https://placehold.co/100x60/222/d4af37?text=Sponsor+2" alt="Sponsor Diamante 2">
-         <img src="https://placehold.co/100x60/222/d4af37?text=Sponsor+3" alt="Sponsor Diamante 3">
+         <a href="https://www.instagram.com/cavergarage/" target="_blank"><img src="imagenes/sponsors/logo caver.png" alt="Sponsor Diamante 1"></a>
+         <a href="https://www.instagram.com/epsilon.finanzas/" target="_blank"><img src="imagenes/sponsors/logo epsilon.jpg" alt="Sponsor Diamante 2"></a>
+
+         <img src="https://placehold.co/100x60/222/d4af37?text=Sponsor+3" alt="Sponsor Diamante 3"></a>
        </div>
      </div>
-      <p>© 2025 Club Tipazo</p>
+      <p>© 2026 Club Deportivo Villa Elisa</p>
     </footer>
 
     <script src="script.js"></script>

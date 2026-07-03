@@ -1,121 +1,42 @@
-
-Panel · HTML
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mi Cuenta | Club Tipazo</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Mi Cuenta | Club Deportivo Villa Elisa</title>
  
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
- 
-<style>
-  :root {
-    --gold: #d4af37;
-    --bg: #0a0a0a;
-    --panel: rgba(255, 255, 255, 0.04);
-    --panel-border: rgba(212, 175, 55, 0.25);
-    --text: #f2f2f2;
-    --text-dim: #b8b8b8;
-    --green: #7fbf7f;
-    --red: #e07a7a;
-  }
- 
-  * { box-sizing: border-box; }
- 
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-  }
- 
-  .card {
-    width: 100%;
-    max-width: 460px;
-    background: var(--panel);
-    border: 1px solid var(--panel-border);
-    border-radius: 12px;
-    padding: 40px 32px;
-    backdrop-filter: blur(6px);
-  }
- 
-  .card h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    color: var(--gold);
-    margin: 0 0 28px;
-    text-align: center;
-  }
- 
-  .fila {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
- 
-  .fila:last-of-type { border-bottom: none; }
- 
-  .fila .label {
-    color: var(--text-dim);
-    font-size: 0.88rem;
-  }
- 
-  .fila .valor {
-    font-weight: 500;
-    text-align: right;
-  }
- 
-  .badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.82rem;
-    font-weight: 600;
-  }
- 
-  .badge.al_dia { background: rgba(127, 191, 127, 0.15); color: var(--green); }
-  .badge.pendiente { background: rgba(224, 122, 122, 0.15); color: var(--red); }
- 
-  #estado-carga, #estado-error {
-    text-align: center;
-    color: var(--text-dim);
-    font-size: 0.9rem;
-  }
- 
-  #estado-error { color: var(--red); }
- 
-  button#btn-salir {
-    width: 100%;
-    margin-top: 28px;
-    padding: 12px;
-    background: transparent;
-    border: 1px solid var(--panel-border);
-    border-radius: 8px;
-    color: var(--text-dim);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    cursor: pointer;
-  }
- 
-  button#btn-salir:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-  }
- 
-  #contenido { display: none; }
-</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
  
+<header class="header-chico">
+  <div class="header-overlay">
+    <h1>Mi cuenta</h1>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-contenido">
+    <div class="nav-marca">
+      <img src="imagenes/logo.png" alt="Escudo" class="nav-escudo">
+      <span class="nav-nombre">Club Deportivo Villa Elisa</span>
+    </div>
+    <button class="nav-hamburguesa" onclick="toggleMenu()">☰</button>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html" onclick="cerrarMenu()">Inicio</a>
+      <a href="actividades.html" onclick="cerrarMenu()">Actividades</a>
+      <a href="servicios.html" onclick="cerrarMenu()">Servicios</a>
+      <a href="socios.html" onclick="cerrarMenu()">Socios</a>
+      <a href="panel.html" onclick="cerrarMenu()">Usuario</a>
+      <a href="contacto.html" onclick="cerrarMenu()">Contacto</a>
+    </div>
+  </div>
+</nav>
+
 <div class="card">
   <h1>Mi Cuenta</h1>
  
@@ -140,6 +61,18 @@ Panel · HTML
     <a href="admin.html" id="link-admin" style="display:none; text-align:center; margin-top:14px; color: var(--gold); font-size: 0.85rem; text-decoration: none;">→ Panel de administración</a>
   </div>
 </div>
+
+<footer>
+  <div class="footer-sponsors">
+    <p class="footer-sponsors-label">Sponsors</p>
+    <div class="footer-sponsors-logos">
+      <img src="https://placehold.co/100x60/222/d4af37?text=Sponsor+1" alt="Sponsor">
+    </div>
+  </div>
+  <p>© 2025 Club Tipazo</p>
+</footer>
+
+<script src="script.js"></script>
  
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
  
@@ -220,4 +153,8 @@ Panel · HTML
 </script>
  
 </body>
+<div class="mancha mancha-1"></div>
+<div class="mancha mancha-2"></div>
+<div class="mancha mancha-3"></div>
+<div class="mancha mancha-4"></div>
 </html>
