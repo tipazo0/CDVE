@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsors - Club Deportivo Villa Elisa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div class="mancha mancha-1"></div>
+    <div class="mancha mancha-2"></div>
+    <div class="mancha mancha-3"></div>
+    <div class="mancha mancha-4"></div>
+
+    <header class="header-chico">
+      <div class="header-overlay">
+        <h1>Sumate como sponsor</h1>
+      </div>
+    </header>
+
+    <nav>
+      <div class="nav-contenido">
+        <div class="nav-marca">
+          <img src="imagenes/logo.png" alt="Escudo" class="nav-escudo">
+          <span class="nav-nombre">Club Deportivo Villa Elisa</span>
+        </div>
+        <button class="nav-hamburguesa" onclick="toggleMenu()">☰</button>
+        <div class="nav-links" id="nav-links">
+          <a href="index.html" onclick="cerrarMenu()">Inicio</a>
+          <a href="actividades.html" onclick="cerrarMenu()">Actividades</a>
+          <a href="servicios.html" onclick="cerrarMenu()">Servicios</a>
+          <a href="socios.html" onclick="cerrarMenu()">Socios</a>
+          <a href="contacto.html" onclick="cerrarMenu()">Contacto</a>
+        </div>
+      </div>
+    </nav>
+
+    <section id="sponsors-porque">
+      <h2>¿Para qué buscamos sponsors?</h2>
+      <p class="sponsors-subtitulo">Necesitamos de ustedes para:</p>
+      <div class="porque-grid">
+        <div class="porque-item">
+          <p>Mejorar nuestra infraestructura y ampliar nuestras instalaciones.</p>
+        </div>
+        <div class="porque-item">
+          <p>Potenciar nuestras actividades y disciplinas deportivas.</p>
+        </div>
+        <div class="porque-item">
+          <p>Atraer nuevos socios y fortalecer nuestra comunidad.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="planes">
+      <h2>Nuestros planes</h2>
+      <div class="planes-grid">
+
+        <div class="plan bronce">
+          <h3>Bronce</h3>
+          <p class="plan-precio">$15.000<span>/mes</span></p>
+          <ul class="plan-beneficios">
+            <li>Logo en el footer del sitio</li>
+            <li>Mención en redes sociales</li>
+          </ul>
+        </div>
+
+        <div class="plan plata">
+          <h3>Plata</h3>
+          <p class="plan-precio">$25.000<span>/mes</span></p>
+          <ul class="plan-beneficios">
+            <li>Todo lo de Bronce</li>
+            <li>Logo más grande y destacado</li>
+          </ul>
+        </div>
+
+        <div class="plan destacado oro">
+          <span class="plan-badge">Más elegido</span>
+          <h3>Oro</h3>
+          <p class="plan-precio">$35.000<span>/mes</span></p>
+          <ul class="plan-beneficios">
+            <li>Todo lo de Plata</li>
+            <li>Mención en eventos del club</li>
+          </ul>
+        </div>
+
+        <div class="plan diamante">
+          <h3>Diamante</h3>
+          <p class="plan-precio">$50.000<span>/mes</span></p>
+          <ul class="plan-beneficios">
+            <li>Todo lo de Oro</li>
+            <li>Logo en el footer de todas las páginas</li>
+            <li>Presencia destacada en el club</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="planes-nota">
+        Los planes abonados de forma anual cuentan con una bonificación especial.
+        Además, ofrecemos beneficios adicionales por renovación de contrato o por recomendar
+        a otras empresas o marcas que se sumen como sponsors.
+      </p>
+    </section>
+
+    <section id="sponsors-contacto">
+      <h2>¿Querés sumarte?</h2>
+      <p>Escribinos para recibir más información o coordinar una visita al club.</p>
+      <a href="contacto.html" class="sponsor-btn">Contactanos</a>
+    </section>
+
+    <footer>
+      <p>© 2026 Club Deportivo Villa Elisa</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
